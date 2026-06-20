@@ -1,0 +1,85 @@
+{
+  "last_node_id": 42,
+  "last_link_id": 100,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [100, 100],
+      "size": [315, 314],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "IMAGE", "type": "IMAGE", "links": [1]},
+        {"name": "MASK", "type": "MASK", "links": null}
+      ],
+      "properties": {},
+      "widgets_values": ["example.png", "image"]
+    },
+    {
+      "id": 2,
+      "type": "ImageRater",
+      "pos": [500, 100],
+      "size": [315, 150],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {"name": "images", "type": "IMAGE", "link": 1}
+      ],
+      "outputs": [
+        {"name": "rated_images", "type": "IMAGE", "links": [2]},
+        {"name": "rating_scores", "type": "FLOAT", "links": [3]},
+        {"name": "metadata", "type": "STRING", "links": null}
+      ],
+      "properties": {},
+      "widgets_values": ["heuristic", 0.0, "batch_001"]
+    },
+    {
+      "id": 3,
+      "type": "ImageOrganizer",
+      "pos": [900, 100],
+      "size": [315, 200],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {"name": "images", "type": "IMAGE", "link": 2},
+        {"name": "rating_scores", "type": "FLOAT", "link": 3}
+      ],
+      "outputs": [
+        {"name": "organized_paths", "type": "STRING", "links": null},
+        {"name": "moved_count", "type": "INT", "links": null},
+        {"name": "status", "type": "STRING", "links": null}
+      ],
+      "properties": {},
+      "widgets_values": ["./output/rated", "excellent:8-10\ngood:5-7\nacceptable:3-4\nrejected:1-2", "move", "rated"]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [500, 350],
+      "size": [315, 270],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {"name": "images", "type": "IMAGE", "link": 2}
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [2, 2, 0, 3, 0, "IMAGE"],
+    [3, 2, 1, 3, 1, "FLOAT"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

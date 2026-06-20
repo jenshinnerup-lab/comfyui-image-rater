@@ -1,0 +1,17 @@
+# ComfyUI Image Rater Dependencies
+
+# Core
+torch>=2.0.0
+torchvision>=0.15.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Image quality assessment
+piq>=0.7.0  # Perceptual Image Quality
+
+# Optional: ML models
+# transformers>=4.30.0  # For HuggingFace models
+# timm>=0.9.0           # For pre-trained vision models
+
+# Utilities
+opencv-python-headless>=4.8.0
